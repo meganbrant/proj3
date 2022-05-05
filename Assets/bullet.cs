@@ -13,5 +13,15 @@ public class bullet : MonoBehaviour
       }
    }
 
+   void Update(){
+      StartCoroutine(BulletDisappear());
+      
+   }
+
+   IEnumerator BulletDisappear(){
+        yield return new WaitForSeconds(3);
+        Destroy(this.gameObject);
+    }
+
 
 }

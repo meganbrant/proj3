@@ -8,10 +8,18 @@ public class MoveTo : MonoBehaviour
     [SerializeField]
     public Transform target;
     [SerializeField]
-    float stoppingDistance = 10f;
+    private Rigidbody bulletprefab;
+    [SerializeField]
+    private Transform bulletSpawn;
+    [SerializeField]
+    float stoppingDistance = 5f;
 
     private NavMeshAgent agent;
-    bool canFire = true;
+    // bool canFire = false;
+
+    [SerializeField]
+    private float shotInterval = 5f;
+    private float bulletSpeed = 15f;
 
 
 
@@ -36,19 +44,27 @@ public class MoveTo : MonoBehaviour
             Vector3 direction = (target.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, 360);
-            Fire();
+            StartCoroutine(Fire());
+            //StartCoroutine(WaitToFire());
         }
     }
 
-    void Fire() {
-        if(canFire) {
-            Debug.Log("Pow!");
-            StartCoroutine(WaitToFire());
-        }
-    }
-    IEnumerator WaitToFire(){
-        canFire = false;
-        yield return new WaitForSeconds(1);
-        canFire = true;
+    // void Pow() {
+    //     if(canFire) {
+    //         Debug.Log("Pow!");
+    //     }
+    // }
+    // IEnumerator WaitToFire(){
+    //     canFire = false;
+    //     yield return new WaitForSeconds(2);
+    //     canFire = true;
+    // }
+
+    IEnumerator Fire() {
+        
+        yield return new WaitForSeconds(shotInterval);
+        Rigidbody copy = Instantiate(bulletprefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+        copy.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
+        
     }
 }

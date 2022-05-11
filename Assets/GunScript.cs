@@ -8,6 +8,7 @@ public class GunScript : MonoBehaviour
     public Rigidbody bulletPrefab;
     public Transform bulletSpawn;
 
+
     [Range (10,100)]
     public float bulletSpeed = 50;
     public float fireRate = 0.1f;    
@@ -21,11 +22,13 @@ public class GunScript : MonoBehaviour
     public int totalAmmo = 30;
     public int clipSize = 10;
     public int clip = 0;
+    
 
     private AudioSource aud;
+    private Rigidbody rb;
+
 
     bool canShoot = true;
-
     //----------------------combo script ugh
 
     public enum elements {Fire, Ice, Earth, Wind};
@@ -33,23 +36,23 @@ public class GunScript : MonoBehaviour
 
     public string name = "Gun";
     public int damage = 2;
-    public float rateOfFire = 0.5f;
+    
 
     [Header("Randomization")]
     public List<string> names;
     public Vector2 damageRange;
     public Vector2 rateOfFireRange;
 
+    void Start(){
+      aud = this.gameObject.GetComponent<AudioSource>();
+      rb = this.GetComponent<Rigidbody>();
+
+    }
+
     public void Randomize() {
       name = names[(int)elType];
       damage = (int)Random.Range(damageRange.x, damageRange.y);
-      rateOfFire = Random.Range(rateOfFireRange.x, rateOfFireRange.y);
-    }
-
-    void Start(){
-      aud = this.gameObject.GetComponent<AudioSource>();
-
-
+      fireRate = Random.Range(rateOfFireRange.x, rateOfFireRange.y);
     }
 
     public void Reload(){
@@ -67,8 +70,8 @@ public class GunScript : MonoBehaviour
         totalAmmo = 0;
       }
 
-        //UIManager.ammoInClipText.text = "Clip: " + clip.ToString();
-        //UIManager.ammoInReserveText.text = "Ammo: " + totalAmmo.ToString();
+        UIManager.ammoInClipText.text = "Clip: " + clip.ToString();
+        UIManager.ammoInReserveText.text = "Ammo: " + totalAmmo.ToString();
     }
 
     public void Fire(){
@@ -84,7 +87,7 @@ public class GunScript : MonoBehaviour
           bulletStuff.damage = this.damage;
           aud.PlayOneShot(fire);
 
-          //UIManager.ammoInClipText.text = "Clip: " + clip.ToString();
+          UIManager.ammoInClipText.text = "Clip: " + clip.ToString();
           StartCoroutine(Cooldown());
       } else{
           if(debug) Debug.Log("Out of Ammo");
@@ -95,11 +98,25 @@ public class GunScript : MonoBehaviour
 
     public void PickupAmmo(){
       totalAmmo += 90;
-      //UIManager.ammoInReserveText.text = "Ammo: " + totalAmmo.ToString();
+      UIManager.ammoInReserveText.text = "Ammo: " + totalAmmo.ToString();
       aud.PlayOneShot(clipUp);    
     }
 
-    
+    // public void Pickup(){
+    //   this.transform.SetParent(hand);
+    //   rb.isKinematic = true;
+    //   this.transform.position = hand.position;
+    //   this.transform.rotation = hand.rotation;
+    // }
+
+    // public void Drop(){
+    //   Debug.Log("Trying to drop()");
+    //   this.transform.SetParent(null);
+    //   this.transform.Translate(-Vector3.forward *2);
+    //   rb.isKinematic = false;
+    //   rb.AddRelativeForce(-Vector3.forward * 20, ForceMode.Impulse);
+    // }
+
 
     IEnumerator Cooldown(){
        canShoot = false;

@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 200264051460687776}
   - component: {fileID: 2676136887043273578}
   - component: {fileID: 3666521565775971109}
-  - component: {fileID: -7879730976770033763}
-  - component: {fileID: -5964295813657346244}
+  - component: {fileID: 5592486454383230755}
+  - component: {fileID: 4008870064290780885}
   m_Layer: 0
   m_Name: IceGun
   m_TagString: Untagged
@@ -93,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8872a88db06b34b17b9466fdcb6fc0f1, type: 2}
+  - {fileID: 2100000, guid: 0eb1449627d0c428faaa81fcf3600b04, type: 2}
   - {fileID: 2100000, guid: a7633aeb19f2e4dce94d3c00bf1ac847, type: 2}
   - {fileID: -8976064437032432714, guid: 2948727ba77794c2986c4d4df5fcef20, type: 3}
   - {fileID: -4660651839558579860, guid: 2948727ba77794c2986c4d4df5fcef20, type: 3}
@@ -141,17 +141,16 @@ MonoBehaviour:
   totalAmmo: 200
   clipSize: 10
   clip: 0
-  elType: 0
+  elType: 1
   name: 
   damage: 2
-  rateOfFire: 0.5
   names:
   - Snow
   - Chill
   - Freezio
   damageRange: {x: 3, y: 6}
   rateOfFireRange: {x: 0.4, y: 0.7}
---- !u!54 &-7879730976770033763
+--- !u!54 &5592486454383230755
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +166,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &-5964295813657346244
+--- !u!64 &4008870064290780885
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

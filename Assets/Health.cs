@@ -28,13 +28,13 @@ public class Health : MonoBehaviour
             Death();
         }
         if(hType== healthType.Player){
-           // UIManager.playerHealthText.text = "Health: " + health.ToString();
+            UIManager.playerHealthText.text = "Health: " + health.ToString();
         }
     }
 
     // LOOK AT ME LEARNING AND WRITING THIS ON MY OWN WOW
     public void CollectCoin(){
-        health += 10;
+        health += 30;
         aud.PlayOneShot(coinCollect);
     }
 
@@ -72,7 +72,7 @@ public class Health : MonoBehaviour
             aud.PlayOneShot(death);
         } else if(hType == healthType.Enemy){
             this.gameObject.AddComponent<Rigidbody>();
-           // UIManager.KilledEnemy();
+            UIManager.KilledEnemy();
             //Destroy(this.gameObject, 5);
             StartCoroutine(GetSmallAndDie());
             aud.PlayOneShot(death);

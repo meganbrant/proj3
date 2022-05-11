@@ -13,7 +13,7 @@ public class SpawnEnemies : MonoBehaviour
 
     void Update() {
         if(Vector3.Distance(transform.position,target.position)< 25 && readyToSpawn){
-            int buddiesToSpawn = Random.Range(3,7);
+            int buddiesToSpawn = 1;
             for(int i = 0; i < buddiesToSpawn; i++) {
                 Spawn();
             }

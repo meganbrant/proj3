@@ -13,7 +13,7 @@ public class GunSpawner : MonoBehaviour
 
     void SpawnItem() {
         if(!onCooldown) {
-            int elementType = Random.Range(0,4);
+            int elementType = Random.Range(0,3);
             GunScript newGun = Instantiate(gunPrefabs[Random.Range(0, gunPrefabs.Count)], transform.position, transform.rotation);
             newGun.elType = (GunScript.elements) elementType;
            // newGun.Randomize();

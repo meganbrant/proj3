@@ -5,8 +5,8 @@ using UnityEngine;
 public class aiTurret : MonoBehaviour
 {
 
-    //[SerializeField]
-    //private Transform target;
+    [SerializeField]
+    private Transform target;
 
     [SerializeField]
     private float shotInterval = 1f;
@@ -17,7 +17,6 @@ public class aiTurret : MonoBehaviour
 
     [SerializeField]
     private Transform bulletSpawn;
-
 
 
 

@@ -618,8 +618,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hType: 1
   elType: 0
-  death: {fileID: 0}
-  coinCollect: {fileID: 0}
+  death: {fileID: 8300000, guid: 457575fa030a1467a8ab24281d405838, type: 3}
+  coinCollect: {fileID: 8300000, guid: 1606d55372ad64172a310dfba00fd79d, type: 3}
   health: 10
 --- !u!1 &7190958697246522219
 GameObject:

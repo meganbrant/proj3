@@ -68,5 +68,10 @@ public class InputManager : MonoBehaviour
             }
         }
 
+        // if(keyboard.eKey.wasPressedThisFrame){
+        //     GunScript.heldGun.Drop();
+        //     GunScript.heldGun = null;
+        // }
+
     }
 }
